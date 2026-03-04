@@ -152,6 +152,10 @@ class QueryResult:
     is_cache_hit: bool = False
     similarity_score: float = 0.0
     matched_query: str = ""
+
+    # v3 fields
+    match_layer: int = 0  # 0=full miss, 1=full-query hit (Layer 1), 2=atom-level hit (Layer 2)
+    match_tier: str = ""  # "direct_hit", "adapted", "atom_hit", or "full_miss"
     
     @property
     def cost_savings_pct(self) -> float:

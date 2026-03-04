@@ -1,0 +1,99 @@
+
+  Intent Atoms Benchmark — DRY-RUN (simulated LLM)
+  Queries: 10
+  Engines: V1 (Decompose) | V2 (FAISS) | V3 (Hybrid 3-tier)
+
+======================================================================
+  Running V1 (Decompose → Match → Generate → Compose) — 10 queries
+======================================================================
+Loading embedding model...
+Embedding model loaded!
+  [ 1/10] MISS             cost=   $0.019676  time=   6737ms
+  [ 2/10] MISS             cost=   $0.014578  time=    114ms
+  [ 3/10] MISS             cost=   $0.014574  time=    111ms
+  [ 4/10] MISS             cost=   $0.005162  time=     53ms
+  [ 5/10] HIT              cost=   $0.009768  time=     60ms
+  [ 6/10] HIT              cost=   $0.009756  time=     60ms
+  [ 7/10] HIT              cost=   $0.004674  time=     16ms
+  [ 8/10] HIT              cost=   $0.004826  time=     19ms
+  [ 9/10] HIT              cost=   $0.009660  time=     49ms
+  [10/10] HIT              cost=   $0.004826  time=     23ms
+
+======================================================================
+  Running V2 (Embed → FAISS Search → Return/Generate) — 10 queries
+======================================================================
+Loading embedding model...
+Embedding model loaded!
+  [ 1/10] MISS             cost=   $0.004950  time=   2175ms
+  [ 2/10] MISS             cost=   $0.004950  time=     94ms
+  [ 3/10] MISS             cost=   $0.004950  time=     18ms
+  [ 4/10] MISS             cost=   $0.004950  time=     38ms
+  [ 5/10] MISS             cost=   $0.004950  time=     31ms
+  [ 6/10] MISS             cost=   $0.004950  time=     31ms
+  [ 7/10] MISS             cost=   $0.004950  time=     18ms
+  [ 8/10] MISS             cost=   $0.004950  time=     14ms
+  [ 9/10] MISS             cost=   $0.004950  time=     21ms
+  [10/10] HIT              cost=   $0.000000  time=     19ms  sim=1.000
+          matched: "How do I deploy a React app with Docker on AWS?"
+
+======================================================================
+  Running V3 (Tier 1: Direct | Tier 2: Adapt | Layer 2: Atoms) — 10 queries
+======================================================================
+Loading embedding model...
+Embedding model loaded!
+  [ 1/10] MISS             cost=   $0.019676  time=   2487ms
+  [ 2/10] MISS             cost=   $0.014578  time=     43ms
+  [ 3/10] MISS             cost=   $0.014574  time=     47ms
+  [ 4/10] MISS             cost=   $0.005162  time=     30ms
+  [ 5/10] HIT   T2:adapt   cost=   $0.001160  time=     18ms  sim=0.739
+          matched: "How do I deploy a React app with Docker on AWS?"
+  [ 6/10] HIT   L2:atom    cost=   $0.014706  time=     73ms
+  [ 7/10] HIT   L2:atom    cost=   $0.004674  time=     42ms
+  [ 8/10] HIT   T2:adapt   cost=   $0.001160  time=     11ms  sim=0.772
+          matched: "How do I deploy a React app with Docker on AWS?"
+  [ 9/10] HIT   L2:atom    cost=   $0.009660  time=     46ms
+  [10/10] HIT   T1:direct  cost=   $0.000000  time=     12ms  sim=1.000
+          matched: "How do I deploy a React app with Docker on AWS?"
+
+
+======================================================================================================================================================
+                                                              QUERY-BY-QUERY COMPARISON                                                               
+======================================================================================================================================================
+ #  Query                                     V1 Hit    V1 Cost   V1 ms  V2 Hit    V2 Cost   V2 ms  V3 Hit    V3 Cost   V3 ms       Tier
+------------------------------------------------------------------------------------------------------------------------------------------------------
+ 1  How do I deploy a React app with Docke..     0/3 $ 0.019676   6737ms    MISS $ 0.004950   2175ms    MISS $ 0.019676   2487ms  full_miss
+ 2  What is JWT authentication and how to ..     0/2 $ 0.014578    114ms    MISS $ 0.004950     94ms    MISS $ 0.014578     43ms  full_miss
+ 3  Explain SQL vs NoSQL databases               0/2 $ 0.014574    111ms    MISS $ 0.004950     18ms    MISS $ 0.014574     47ms  full_miss
+ 4  How to set up CI/CD with GitHub Actions?     0/1 $ 0.005162     53ms    MISS $ 0.004950     38ms    MISS $ 0.005162     30ms  full_miss
+ 5  How to deploy a Python Flask app with ..     2/3 $ 0.009768     60ms    MISS $ 0.004950     31ms     HIT $ 0.001160     18ms    adapted
+ 6  Implement JWT auth in a FastAPI Python..     2/3 $ 0.009756     60ms    MISS $ 0.004950     31ms     HIT $ 0.014706     73ms   atom_hit
+ 7  Comparing relational databases versus ..     2/2 $ 0.004674     16ms    MISS $ 0.004950     18ms     HIT $ 0.004674     42ms   atom_hit
+ 8  Steps to containerize a React frontend..     3/3 $ 0.004826     19ms    MISS $ 0.004950     14ms     HIT $ 0.001160     11ms    adapted
+ 9  How does Docker networking work intern..     1/2 $ 0.009660     49ms    MISS $ 0.004950     21ms     HIT $ 0.009660     46ms   atom_hit
+10  How do I deploy a React app with Docke..     3/3 $ 0.004826     23ms     HIT $ 0.000000     19ms     HIT $ 0.000000     12ms direct_hit
+
+
+=====================================================================================
+                                       SUMMARY                                       
+=====================================================================================
+Metric                            V1 (Decompose)        V2 (FAISS)       V3 (Hybrid)
+-------------------------------------------------------------------------------------
+Cache hits / total............      13/24             1/10             7/18       
+Hit rate......................             54.2%            10.0%            38.9%
+Total cost....................  $      0.097500  $      0.044550  $      0.085350
+Cost without cache............  $      0.120090  $      0.049500  $      0.143577
+Cost savings..................             18.8%            10.0%            40.6%
+Total time....................            7241ms            2459ms            2808ms
+Tokens used...................            10,615             4,050             9,618
+Tokens saved..................             3,900               450            11,199
+=====================================================================================
+
+  V3 Tier Breakdown:
+    Tier 1 — Direct Hit (sim > 0.85):  1 queries  (zero cost)
+    Tier 2 — Adapted   (sim 0.70-0.85): 2 queries  (cheap Haiku)
+    Layer 2 — Atom Hit  (decompose):    3 queries  (partial cache)
+    Full Miss (no cache):               4 queries  (full Sonnet)
+
+  >> Best cost savings: V3 (Hybrid) at 40.6%
+  >> Fastest overall:  V2 (FAISS) at 2459ms
+

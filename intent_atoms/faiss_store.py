@@ -29,6 +29,7 @@ class FAISSStore:
         self,
         dimension: int = 768,
         persist_dir: Optional[str] = None,
+        index_prefix: Optional[str] = None,
     ):
         import faiss
 
@@ -41,8 +42,12 @@ class FAISSStore:
         self._index_path = None
         self._mapping_path = None
         if persist_dir:
-            self._index_path = os.path.join(persist_dir, "faiss_index.bin")
-            self._mapping_path = os.path.join(persist_dir, "query_cache.json")
+            if index_prefix:
+                self._index_path = os.path.join(persist_dir, f"{index_prefix}.index")
+                self._mapping_path = os.path.join(persist_dir, f"{index_prefix}_meta.json")
+            else:
+                self._index_path = os.path.join(persist_dir, "faiss_index.bin")
+                self._mapping_path = os.path.join(persist_dir, "query_cache.json")
             self._load()
 
     async def store(
