@@ -1,0 +1,12 @@
+[
+  {"query": "How do I deploy a React app with Docker on AWS?", "cache_hits": 0, "total_atoms": 2, "cost": 0.027765, "time_ms": 25853, "is_cache_hit": false},
+  {"query": "What is JWT authentication and how to implement it in Node.js?", "cache_hits": 0, "total_atoms": 2, "cost": 0.028334, "time_ms": 22634, "is_cache_hit": false},
+  {"query": "Explain SQL vs NoSQL databases", "cache_hits": 0, "total_atoms": 1, "cost": 0.006907, "time_ms": 8890, "is_cache_hit": false},
+  {"query": "How to set up CI/CD with GitHub Actions?", "cache_hits": 0, "total_atoms": 1, "cost": 0.006946, "time_ms": 9843, "is_cache_hit": false},
+  {"query": "How to deploy a Python Flask app with Docker on AWS?", "cache_hits": 1, "total_atoms": 2, "cost": 0.022286, "time_ms": 12397, "is_cache_hit": true},
+  {"query": "Implement JWT auth in a FastAPI Python application", "cache_hits": 0, "total_atoms": 1, "cost": 0.006908, "time_ms": 7123, "is_cache_hit": false},
+  {"query": "Comparing relational databases versus document stores", "cache_hits": 0, "total_atoms": 1, "cost": 0.006907, "time_ms": 9540, "is_cache_hit": false},
+  {"query": "Steps to containerize a React frontend and push to AWS", "cache_hits": 2, "total_atoms": 2, "cost": 0.014350, "time_ms": 4913, "is_cache_hit": true},
+  {"query": "How does Docker networking work internally between containers?", "cache_hits": 0, "total_atoms": 1, "cost": 0.006885, "time_ms": 10020, "is_cache_hit": false},
+  {"query": "How do I deploy a React app with Docker on AWS?", "cache_hits": 1, "total_atoms": 1, "cost": 0.000735, "time_ms": 997, "is_cache_hit": true}
+]

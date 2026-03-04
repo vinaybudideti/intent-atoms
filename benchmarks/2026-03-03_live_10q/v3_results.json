@@ -1,0 +1,12 @@
+[
+  {"query": "How do I deploy a React app with Docker on AWS?", "cache_hits": 0, "total_atoms": 1, "cost": 0.006939, "time_ms": 10084, "is_cache_hit": false, "similarity_score": 0.0, "match_tier": "full_miss"},
+  {"query": "What is JWT authentication and how to implement it in Node.js?", "cache_hits": 0, "total_atoms": 2, "cost": 0.028430, "time_ms": 19289, "is_cache_hit": false, "similarity_score": 0.0, "match_tier": "full_miss"},
+  {"query": "Explain SQL vs NoSQL databases", "cache_hits": 0, "total_atoms": 1, "cost": 0.006915, "time_ms": 9335, "is_cache_hit": false, "similarity_score": 0.0, "match_tier": "full_miss"},
+  {"query": "How to set up CI/CD with GitHub Actions?", "cache_hits": 0, "total_atoms": 1, "cost": 0.006938, "time_ms": 7729, "is_cache_hit": false, "similarity_score": 0.0, "match_tier": "full_miss"},
+  {"query": "How to deploy a Python Flask app with Docker on AWS?", "cache_hits": 1, "total_atoms": 1, "cost": 0.002031, "time_ms": 2048, "is_cache_hit": true, "similarity_score": 0.739, "match_tier": "adapted", "matched_query": "How do I deploy a React app with Docker on AWS?"},
+  {"query": "Implement JWT auth in a FastAPI Python application", "cache_hits": 0, "total_atoms": 1, "cost": 0.006908, "time_ms": 6245, "is_cache_hit": false, "similarity_score": 0.0, "match_tier": "full_miss"},
+  {"query": "Comparing relational databases versus document stores", "cache_hits": 0, "total_atoms": 1, "cost": 0.006907, "time_ms": 10045, "is_cache_hit": false, "similarity_score": 0.0, "match_tier": "full_miss"},
+  {"query": "Steps to containerize a React frontend and push to AWS", "cache_hits": 1, "total_atoms": 1, "cost": 0.002131, "time_ms": 2240, "is_cache_hit": true, "similarity_score": 0.772, "match_tier": "adapted", "matched_query": "How do I deploy a React app with Docker on AWS?"},
+  {"query": "How does Docker networking work internally between containers?", "cache_hits": 0, "total_atoms": 1, "cost": 0.006892, "time_ms": 11265, "is_cache_hit": false, "similarity_score": 0.0, "match_tier": "full_miss"},
+  {"query": "How do I deploy a React app with Docker on AWS?", "cache_hits": 1, "total_atoms": 1, "cost": 0.000000, "time_ms": 97, "is_cache_hit": true, "similarity_score": 1.0, "match_tier": "direct_hit", "matched_query": "How do I deploy a React app with Docker on AWS?"}
+]

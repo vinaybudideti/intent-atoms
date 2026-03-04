@@ -1,3 +1,5 @@
+# March 1, 2026 ---------------------------------------------------------------
+
 # Intent Atoms — Work Log
 
 ## Project Overview
@@ -124,3 +126,5 @@ python3 -m pytest tests/ -v
 - `setup.py` not updated with `faiss-cpu` and `sentence-transformers` in install_requires
 - No v1 vs v2 benchmark comparison script
 - MongoDB store (`MongoAtomStore`) not adapted for v2
+
+# -------------------------------------------------------------------------------------------------

@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-03-03_23-23-12",
+  "mode": "live",
+  "num_queries": 100,
+  "num_topics": 10,
+  "shuffle_seed": 42,
+  "engine": "v3_hybrid",
+  "summary": {
+    "hit_rate": 87.5,
+    "total_cost": 0.244156,
+    "cost_without_cache": 0.8659536,
+    "cost_savings_pct": 71.8,
+    "total_hits": 91,
+    "total_atoms": 104,
+    "tier_counts": {
+      "full_miss": 9,
+      "direct_hit": 54,
+      "atom_hit": 2,
+      "adapted": 35
+    }
+  }
+}

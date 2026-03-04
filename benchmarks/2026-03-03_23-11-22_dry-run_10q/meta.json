@@ -1,0 +1,67 @@
+{
+  "timestamp": "2026-03-03_23-11-22",
+  "mode": "dry-run",
+  "num_queries": 10,
+  "engines": [
+    "v1_decompose",
+    "v2_faiss",
+    "v3_hybrid"
+  ],
+  "queries": [
+    "How do I deploy a React app with Docker on AWS?",
+    "What is JWT authentication and how to implement it in Node.js?",
+    "Explain SQL vs NoSQL databases",
+    "How to set up CI/CD with GitHub Actions?",
+    "How to deploy a Python Flask app with Docker on AWS?",
+    "Implement JWT auth in a FastAPI Python application",
+    "Comparing relational databases versus document stores",
+    "Steps to containerize a React frontend and push to AWS",
+    "How does Docker networking work internally between containers?",
+    "How do I deploy a React app with Docker on AWS?"
+  ],
+  "v1_summary": {
+    "hits": 13,
+    "atoms": 24,
+    "cost": 0.0975,
+    "cost_no_cache": 0.12008999999999999,
+    "time": 7241.339206695557,
+    "tokens": 10615,
+    "saved": 3900,
+    "hit_rate": 54.166666666666664,
+    "savings_pct": 18.810891831126643,
+    "t1_direct": 0,
+    "t2_adapt": 0,
+    "l2_atom": 0,
+    "full_miss": 10
+  },
+  "v2_summary": {
+    "hits": 1,
+    "atoms": 10,
+    "cost": 0.044550000000000006,
+    "cost_no_cache": 0.0495,
+    "time": 2459.367036819458,
+    "tokens": 4050,
+    "saved": 450,
+    "hit_rate": 10.0,
+    "savings_pct": 9.999999999999986,
+    "t1_direct": 0,
+    "t2_adapt": 0,
+    "l2_atom": 0,
+    "full_miss": 10
+  },
+  "v3_summary": {
+    "hits": 7,
+    "atoms": 18,
+    "cost": 0.08535,
+    "cost_no_cache": 0.14357699999999998,
+    "time": 2808.230400085449,
+    "tokens": 9618,
+    "saved": 11199,
+    "hit_rate": 38.88888888888889,
+    "savings_pct": 40.554545644497374,
+    "t1_direct": 1,
+    "t2_adapt": 2,
+    "l2_atom": 3,
+    "full_miss": 4
+  }
+}

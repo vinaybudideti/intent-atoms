@@ -1,8 +1,8 @@
 """
-Intent Atoms API Server — FastAPI REST API (v2).
+Intent Atoms API Server — FastAPI REST API (v3 hybrid).
 
 Endpoints:
-  POST /query          — Process a query through the v2 FAISS engine
+  POST /query          — Process a query through the v3 hybrid engine
   GET  /stats          — Get cache performance stats
   POST /clear          — Clear the query cache
   POST /evict          — Evict stale entries
@@ -23,37 +23,35 @@ from typing import Optional
 from dotenv import load_dotenv
 load_dotenv()
 
-from intent_atoms import IntentAtomsEngineV2
+from intent_atoms import IntentAtomsEngineV3
 
 
 # ── Configuration ──
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "anthropic")
 API_KEY = os.getenv("LLM_API_KEY", "")
-PERSIST_DIR = os.getenv("PERSIST_DIR", "./data/faiss_cache")
-SIMILARITY_THRESHOLD = float(os.getenv("SIMILARITY_THRESHOLD", "0.83"))
+PERSIST_DIR = os.getenv("PERSIST_DIR", "./data/v3_cache")
 
-engine: Optional[IntentAtomsEngineV2] = None
+engine: Optional[IntentAtomsEngineV3] = None
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     global engine
 
-    engine = IntentAtomsEngineV2(
+    engine = IntentAtomsEngineV3(
         llm_provider=LLM_PROVIDER,
         api_key=API_KEY,
         persist_dir=PERSIST_DIR,
-        similarity_threshold=SIMILARITY_THRESHOLD,
     )
-    print(f"Intent Atoms Engine v2 initialized (provider={LLM_PROVIDER}, FAISS store)")
+    print(f"Intent Atoms Engine v3 initialized (provider={LLM_PROVIDER}, hybrid FAISS)")
     yield
-    print("Shutting down Intent Atoms Engine v2")
+    print("Shutting down Intent Atoms Engine v3")
 
 
 app = FastAPI(
     title="Intent Atoms API",
-    description="Full-query semantic caching for LLM APIs with FAISS vector search.",
-    version="0.2.0",
+    description="Hybrid two-layer semantic caching for LLM APIs with FAISS vector search.",
+    version="0.3.0",
     lifespan=lifespan,
 )
 
@@ -91,6 +89,8 @@ class QueryResponse(BaseModel):
     matched_query: str = ""
     embedding_time_ms: float = 0.0
     search_time_ms: float = 0.0
+    match_layer: int = 0
+    match_tier: str = ""
 
 class EvictRequest(BaseModel):
     max_age_days: int = Field(30, description="Remove entries unused for this many days")
@@ -100,7 +100,7 @@ class EvictRequest(BaseModel):
 
 @app.get("/health")
 async def health():
-    return {"status": "healthy", "engine_ready": engine is not None, "version": "v2"}
+    return {"status": "healthy", "engine_ready": engine is not None, "version": "v3"}
 
 
 @app.post("/query", response_model=QueryResponse)
@@ -129,6 +129,8 @@ async def process_query(request: QueryRequest):
         matched_query=result.matched_query,
         embedding_time_ms=result.embedding_time_ms,
         search_time_ms=result.search_time_ms,
+        match_layer=result.match_layer,
+        match_tier=result.match_tier,
     )
 
 
@@ -167,35 +169,42 @@ async def evict_stale(request: EvictRequest):
 
 
 @app.get("/atoms")
-async def list_cached_entries(skip: int = 0, limit: int = 50):
-    """List all cached queries (v2)."""
+async def list_cached_entries(skip: int = 0, limit: int = 50, index: str = "all"):
+    """List cached entries. index=query|atom|all (default: all)."""
     if not engine:
         raise HTTPException(503, "Engine not initialized")
 
-    store = engine.store
+    entries = []
+    if index in ("query", "all"):
+        entries.extend(
+            (e, "query") for e in getattr(engine.query_store, "entries", [])
+        )
+    if index in ("atom", "all"):
+        entries.extend(
+            (e, "atom") for e in getattr(engine.atom_store, "entries", [])
+        )
 
-    if hasattr(store, 'entries'):
-        all_entries = sorted(store.entries, key=lambda e: e.usage_count, reverse=True)
-        page = all_entries[skip:skip + limit]
-        return {
-            "total": len(all_entries),
-            "atoms": [
-                {
-                    "id": e.id,
-                    "intent_text": e.query_text,
-                    "intent_label": e.query_text[:40],
-                    "usage_count": e.usage_count,
-                    "domain_tags": [],
-                    "created_at": e.created_at.isoformat(),
-                    "last_used": e.last_used.isoformat(),
-                    "token_count": e.output_tokens,
-                    "generation_cost": e.generation_cost,
-                }
-                for e in page
-            ],
-        }
+    entries.sort(key=lambda x: x[0].usage_count, reverse=True)
+    page = entries[skip:skip + limit]
 
-    return {"total": 0, "atoms": []}
+    return {
+        "total": len(entries),
+        "atoms": [
+            {
+                "id": e.id,
+                "intent_text": e.query_text,
+                "intent_label": e.query_text[:40],
+                "usage_count": e.usage_count,
+                "domain_tags": [],
+                "created_at": e.created_at.isoformat(),
+                "last_used": e.last_used.isoformat(),
+                "token_count": e.output_tokens,
+                "generation_cost": e.generation_cost,
+                "index_type": idx_type,
+            }
+            for e, idx_type in page
+        ],
+    }
 
 
 # ── Serve Dashboard (built React app) ──

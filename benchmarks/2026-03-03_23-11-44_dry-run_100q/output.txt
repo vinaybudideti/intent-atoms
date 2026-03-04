@@ -1,0 +1,177 @@
+
+  Intent Atoms 100-Query Benchmark — DRY-RUN (simulated LLM)
+  10 topics x 10 variations = 100 queries (shuffled, seed=42)
+
+================================================================================
+  V3 Hybrid Engine — 100 queries (DRY-RUN)
+================================================================================
+    #  Status                Cost     Time    Sim Tier         Query
+  ----------------------------------------------------------------------------
+Loading embedding model...
+Embedding model loaded!
+    1  MISS full_miss $ 0.019668   6876ms    —   Containerizing a Flask API and running i..
+    2  HIT  direct_hit $ 0.000000     32ms  0.861 Deploying Flask applications in Docker c..
+    3  MISS full_miss $ 0.014594     96ms    —   Kubernetes fundamentals: pods, services,..
+    4  HIT  atom_hit  $ 0.009776     91ms    —   Best approach to ship a React applicatio..
+    5  MISS full_miss $ 0.019656     97ms    —   Differences between RDBMS and document-b..
+    6  MISS full_miss $ 0.019664     89ms    —   Implement JWT auth in a FastAPI Python a..
+    7  HIT  direct_hit $ 0.000000     44ms  0.883 Deploying React applications using Docke..
+    8  HIT  adapted   $ 0.001160     17ms  0.825 Steps to containerize a React frontend a..
+    9  HIT  atom_hit  $ 0.009768     90ms    —   How to secure a Node.js API using JWT to..
+   10  HIT  adapted   $ 0.001160     16ms  0.803 Steps for creating a React Docker image ..
+  ────────────────────────────────────────────────────────────────────────────
+  After  10 queries: hit_rate= 38.1%  cost=$0.095446  savings= 26.9%
+  ────────────────────────────────────────────────────────────────────────────
+   11  HIT  direct_hit $ 0.000000     20ms  0.862 React frontend Docker container to AWS d..
+   12  HIT  adapted   $ 0.001160     39ms  0.778 What is JWT authentication and how to im..
+   13  HIT  adapted   $ 0.001160     19ms  0.737 How to protect FastAPI endpoints with JWT?
+   14  HIT  adapted   $ 0.001160     30ms  0.808 FastAPI authentication tutorial using JW..
+   15  HIT  direct_hit $ 0.000000     16ms  0.892 Containerizing a React application and d..
+   16  HIT  direct_hit $ 0.000000     15ms  0.852 How to run a Dockerized Python Flask bac..
+   17  HIT  adapted   $ 0.001160     14ms  0.824 Packaging a Flask application with Docke..
+   18  HIT  adapted   $ 0.001160     20ms  0.797 Getting started with Kubernetes containe..
+   19  HIT  adapted   $ 0.001160     18ms  0.826 Packaging React frontend in Docker for A..
+   20  MISS full_miss $ 0.005162     31ms    —   How to configure automated builds in Git..
+  ────────────────────────────────────────────────────────────────────────────
+  After  20 queries: hit_rate= 54.8%  cost=$0.107568  savings= 57.1%
+  ────────────────────────────────────────────────────────────────────────────
+   21  HIT  atom_hit  $ 0.000212     31ms    —   How to set up CI/CD with GitHub Actions?
+   22  HIT  atom_hit  $ 0.004806     93ms    —   Comparing SQL and NoSQL database technol..
+   23  HIT  adapted   $ 0.001160     16ms  0.798 GitHub Actions CI/CD pipeline configurat..
+   24  HIT  adapted   $ 0.001160     20ms  0.716 How does Kubernetes manage containerized..
+   25  HIT  atom_hit  $ 0.009660     51ms    —   How does Docker networking work internal..
+   26  HIT  direct_hit $ 0.000000     15ms  0.902 How to containerize Flask and deploy to ..
+   27  HIT  adapted   $ 0.001160     14ms  0.765 Docker networking internals: bridge, hos..
+   28  HIT  adapted   $ 0.001160     13ms  0.813 Pros and cons of SQL vs NoSQL for applic..
+   29  HIT  adapted   $ 0.001160     19ms  0.850 Internal networking mechanisms in Docker..
+   30  HIT  direct_hit $ 0.000000     14ms  0.880 How to automate builds and deployments u..
+  ────────────────────────────────────────────────────────────────────────────
+  After  30 queries: hit_rate= 65.9%  cost=$0.128046  savings= 63.2%
+  ────────────────────────────────────────────────────────────────────────────
+   31  HIT  direct_hit $ 0.000000     23ms  0.860 Containerize and deploy React to AWS usi..
+   32  HIT  direct_hit $ 0.000000     21ms  0.852 Guide to deploying a Flask REST API with..
+   33  HIT  direct_hit $ 0.000000     19ms  0.914 Adding JWT auth middleware to a Python F..
+   34  HIT  direct_hit $ 0.000000     31ms  0.855 SQL relational databases versus NoSQL do..
+   35  HIT  direct_hit $ 0.000000     24ms  0.910 How to create a Docker image for React a..
+   36  HIT  direct_hit $ 0.000000     17ms  0.882 Flask Docker deployment to AWS: complete..
+   37  HIT  direct_hit $ 0.000000     17ms  0.925 Kubernetes 101: understanding pods, node..
+   38  HIT  direct_hit $ 0.000000     20ms  0.933 FastAPI JWT token-based authentication i..
+   39  HIT  direct_hit $ 0.000000     16ms  0.863 How does Docker route traffic between ru..
+   40  HIT  direct_hit $ 0.000000     36ms  0.912 How do JWTs work and how to use them in ..
+  ────────────────────────────────────────────────────────────────────────────
+  After  40 queries: hit_rate= 72.2%  cost=$0.128046  savings= 68.3%
+  ────────────────────────────────────────────────────────────────────────────
+   41  HIT  adapted   $ 0.001160     15ms  0.848 Step-by-step guide to GitHub Actions for..
+   42  HIT  direct_hit $ 0.000000     15ms  0.866 SQL versus NoSQL: when to use each type ..
+   43  HIT  adapted   $ 0.001160     28ms  0.761 GitHub Actions tutorial for automated te..
+   44  HIT  direct_hit $ 0.000000     23ms  0.921 How to deploy a Python Flask app with Do..
+   45  HIT  adapted   $ 0.001160     21ms  0.734 Building auth with JSON Web Tokens in No..
+   46  HIT  atom_hit  $ 0.004806     87ms    —   Comparing PostgreSQL-style databases wit..
+   47  HIT  adapted   $ 0.001160     17ms  0.825 Relational databases vs document-oriente..
+   48  HIT  adapted   $ 0.001160     17ms  0.825 Comparing relational databases versus do..
+   49  HIT  direct_hit $ 0.000000     14ms  0.891 What's the process for running a React a..
+   50  HIT  direct_hit $ 0.000000     16ms  0.855 Creating a CI/CD workflow with GitHub Ac..
+  ────────────────────────────────────────────────────────────────────────────
+  After  50 queries: hit_rate= 77.3%  cost=$0.138652  savings= 70.0%
+  ────────────────────────────────────────────────────────────────────────────
+   51  HIT  adapted   $ 0.001160     13ms  0.797 Beginner's guide to deploying apps with ..
+   52  HIT  adapted   $ 0.001160     14ms  0.835 Setting up Flask in a Docker container o..
+   53  HIT  direct_hit $ 0.000000     16ms  0.890 Steps to containerize a React project an..
+   54  HIT  direct_hit $ 0.000000     18ms  0.851 How to add JWT authentication to a FastA..
+   55  HIT  direct_hit $ 0.000000     20ms  0.890 Explain JWT and show how to add it to a ..
+   56  HIT  adapted   $ 0.001160     26ms  0.747 Using GitHub Actions to set up continuou..
+   57  HIT  direct_hit $ 0.000000     13ms  0.878 How to create login and JWT verification..
+   58  HIT  adapted   $ 0.001160     19ms  0.847 Understanding relational and document da..
+   59  HIT  direct_hit $ 0.000000     20ms  0.855 What are the differences between SQL and..
+   60  HIT  direct_hit $ 0.000000     13ms  0.854 How do relational databases compare to d..
+  ────────────────────────────────────────────────────────────────────────────
+  After  60 queries: hit_rate= 80.3%  cost=$0.143292  savings= 71.1%
+  ────────────────────────────────────────────────────────────────────────────
+   61  HIT  adapted   $ 0.001160     16ms  0.813 Relational databases compared to non-rel..
+   62  HIT  adapted   $ 0.001160     16ms  0.830 Setting up a React Docker container on A..
+   63  HIT  direct_hit $ 0.000000     14ms  0.866 Guide to deploying React with Docker on ..
+   64  HIT  adapted   $ 0.001160     13ms  0.766 Relational vs document store: which is b..
+   65  HIT  direct_hit $ 0.000000     15ms  0.851 How do Docker containers communicate wit..
+   66  HIT  adapted   $ 0.001160     13ms  0.806 How to generate and verify JWTs in a Nod..
+   67  HIT  direct_hit $ 0.000000     15ms  0.871 How to build and deploy a containerized ..
+   68  HIT  direct_hit $ 0.000000     12ms  0.857 Steps to Dockerize a Flask app and push ..
+   69  HIT  adapted   $ 0.001160     14ms  0.786 What is Kubernetes and how to get starte..
+   70  HIT  direct_hit $ 0.000000     17ms  0.878 Explain SQL vs NoSQL databases
+  ────────────────────────────────────────────────────────────────────────────
+  After  70 queries: hit_rate= 82.6%  cost=$0.149092  savings= 71.3%
+  ────────────────────────────────────────────────────────────────────────────
+   71  HIT  direct_hit $ 0.000000     14ms  0.887 How do I deploy a React app with Docker ..
+   72  HIT  direct_hit $ 0.000000     14ms  0.861 Introduction to Kubernetes: what it is a..
+   73  HIT  direct_hit $ 0.000000     18ms  0.878 Implementing token-based security in Fas..
+   74  HIT  direct_hit $ 0.000000     16ms  0.895 How to deploy your first application on ..
+   75  HIT  direct_hit $ 0.000000     16ms  0.951 Building secure auth with JWT in Python ..
+   76  HIT  adapted   $ 0.001160     22ms  0.732 Explaining Docker network drivers and co..
+   77  HIT  direct_hit $ 0.000000     24ms  0.853 How do SQL databases differ from NoSQL d..
+   78  HIT  direct_hit $ 0.000000     16ms  0.867 How to put a React frontend in a Docker ..
+   79  HIT  direct_hit $ 0.000000     17ms  0.894 Understanding how Docker handles network..
+   80  HIT  direct_hit $ 0.000000     12ms  0.868 Guide to Dockerizing React and uploading..
+  ────────────────────────────────────────────────────────────────────────────
+  After  80 queries: hit_rate= 84.4%  cost=$0.150252  savings= 74.2%
+  ────────────────────────────────────────────────────────────────────────────
+   81  HIT  direct_hit $ 0.000000     19ms  0.886 When to choose a relational database ove..
+   82  HIT  direct_hit $ 0.000000     13ms  0.885 Understanding the trade-offs between SQL..
+   83  HIT  adapted   $ 0.001160     17ms  0.850 When should I use SQL instead of NoSQL?
+   84  HIT  adapted   $ 0.001160     18ms  0.796 How does Docker DNS and bridge networkin..
+   85  HIT  adapted   $ 0.001160     14ms  0.833 Starting with Kubernetes: setting up you..
+   86  HIT  direct_hit $ 0.000000     14ms  0.889 How to push a Dockerized React frontend ..
+   87  HIT  adapted   $ 0.001160     16ms  0.806 Setting up JSON Web Token auth for a Fas..
+   88  HIT  adapted   $ 0.001160     16ms  0.831 Building a Docker container for a React ..
+   89  HIT  direct_hit $ 0.000000     18ms  0.901 Implementing JSON Web Token auth in a No..
+   90  HIT  adapted   $ 0.001160     25ms  0.750 Trade-offs between relational tables and..
+  ────────────────────────────────────────────────────────────────────────────
+  After  90 queries: hit_rate= 85.8%  cost=$0.157212  savings= 73.7%
+  ────────────────────────────────────────────────────────────────────────────
+   91  HIT  direct_hit $ 0.000000     15ms  0.900 Docker container-to-container networking..
+   92  HIT  adapted   $ 0.001160     13ms  0.838 JWT authentication tutorial for Node.js ..
+   93  HIT  direct_hit $ 0.000000     16ms  0.880 Node.js JWT implementation for user auth..
+   94  HIT  direct_hit $ 0.000000     17ms  0.878 SQL and NoSQL database comparison for de..
+   95  HIT  direct_hit $ 0.000000     18ms  0.937 Setting up continuous integration and de..
+   96  HIT  direct_hit $ 0.000000     17ms  0.889 Automating testing and deployment with G..
+   97  HIT  direct_hit $ 0.000000     14ms  0.895 Kubernetes basics for beginners: core co..
+   98  HIT  direct_hit $ 0.000000     14ms  0.867 React app deployment workflow with Docke..
+   99  HIT  direct_hit $ 0.000000     20ms  0.855 Setting up token-based authentication wi..
+  100  HIT  direct_hit $ 0.000000     21ms  0.882 Explain Docker container networking and ..
+  ────────────────────────────────────────────────────────────────────────────
+  After 100 queries: hit_rate= 87.1%  cost=$0.158372  savings= 75.7%
+  ────────────────────────────────────────────────────────────────────────────
+
+
+=================================================================
+             FINAL RESULTS — 100-QUERY V3 BENCHMARK              
+=================================================================
+  Total queries:       100
+  Cache hits / total:  101/116
+  Overall hit rate:    87.1%
+  Total cost:          $0.158372
+  Cost without cache:  $0.652452
+  Cost savings:        75.7%
+  Total time:          9254ms
+  Tokens used:         28,347
+  Tokens saved:        102,490
+
+  Tier Breakdown:
+    direct_hit     54 queries  ( 54.0%)
+    adapted        35 queries  ( 35.0%)
+    atom_hit        6 queries  (  6.0%)
+    full_miss       5 queries  (  5.0%)
+
+  Cache Warm-Up Curve (cost & hit rate per 10-query block):
+     Block          Cost    Hit Rate
+  ----------------------------------
+      1-10  $  0.095446       38.1%
+     11-20  $  0.012122       90.0%
+     21-30  $  0.020478       92.3%
+     31-40  $  0.000000      100.0%
+     41-50  $  0.010606      100.0%
+     51-60  $  0.004640      100.0%
+     61-70  $  0.005800      100.0%
+     71-80  $  0.001160      100.0%
+     81-90  $  0.006960      100.0%
+    91-100  $  0.001160      100.0%
+=================================================================
+

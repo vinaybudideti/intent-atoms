@@ -1,0 +1,12 @@
+[
+  {"query": "How do I deploy a React app with Docker on AWS?", "cache_hits": 0, "total_atoms": 1, "cost": 0.015495, "time_ms": 19462, "is_cache_hit": false, "similarity_score": 0.0},
+  {"query": "What is JWT authentication and how to implement it in Node.js?", "cache_hits": 0, "total_atoms": 1, "cost": 0.015501, "time_ms": 12249, "is_cache_hit": false, "similarity_score": 0.0},
+  {"query": "Explain SQL vs NoSQL databases", "cache_hits": 0, "total_atoms": 1, "cost": 0.006510, "time_ms": 8497, "is_cache_hit": false, "similarity_score": 0.0},
+  {"query": "How to set up CI/CD with GitHub Actions?", "cache_hits": 0, "total_atoms": 1, "cost": 0.015492, "time_ms": 11706, "is_cache_hit": false, "similarity_score": 0.0},
+  {"query": "How to deploy a Python Flask app with Docker on AWS?", "cache_hits": 0, "total_atoms": 1, "cost": 0.015495, "time_ms": 15239, "is_cache_hit": false, "similarity_score": 0.0},
+  {"query": "Implement JWT auth in a FastAPI Python application", "cache_hits": 0, "total_atoms": 1, "cost": 0.015489, "time_ms": 12892, "is_cache_hit": false, "similarity_score": 0.0},
+  {"query": "Comparing relational databases versus document stores", "cache_hits": 0, "total_atoms": 1, "cost": 0.010488, "time_ms": 14641, "is_cache_hit": false, "similarity_score": 0.0},
+  {"query": "Steps to containerize a React frontend and push to AWS", "cache_hits": 0, "total_atoms": 1, "cost": 0.015492, "time_ms": 13925, "is_cache_hit": false, "similarity_score": 0.0},
+  {"query": "How does Docker networking work internally between containers?", "cache_hits": 0, "total_atoms": 1, "cost": 0.009711, "time_ms": 15661, "is_cache_hit": false, "similarity_score": 0.0},
+  {"query": "How do I deploy a React app with Docker on AWS?", "cache_hits": 1, "total_atoms": 1, "cost": 0.000000, "time_ms": 58, "is_cache_hit": true, "similarity_score": 1.0, "matched_query": "How do I deploy a React app with Docker on AWS?"}
+]
