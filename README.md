@@ -166,7 +166,7 @@ The expensive model (Sonnet at $3/1M input) is only called for **genuinely new**
 ### Installation
 
 ```bash
-git clone https://github.com/ArkMaster123/intent-atoms.git
+git clone https://github.com/vinaybudideti/intent-atoms.git
 cd intent-atoms
 python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
@@ -397,4 +397,4 @@ MIT
 
 ---
 
-Built by [Vinay Kumar Reddy](https://github.com/ArkMaster123)
+Built by [Vinay Kumar Reddy](https://github.com/vinaybudideti)
